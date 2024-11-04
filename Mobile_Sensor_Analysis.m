@@ -17,6 +17,10 @@ fileAccel = '';
 fileOrient = '';
 fileAngVel = '';
 fileMagField = '';
+trialAccel = 0;
+trialOrient = 0;
+trialAngVel = 0;
+trialMagField = 0;
 
 for Activ_Num = 1:numel(Activities)
     for Trial_Num = 1:3
@@ -36,6 +40,7 @@ for Activ_Num = 1:numel(Activities)
             largestAccelRange = accelRange;
             activityAccel = Activities{Activ_Num};
             fileAccel = filename;
+            trialAccel = Trial_Num;
         end
 
         % Compute elapsed time from Timestep variable and add data to timetable
@@ -49,6 +54,7 @@ for Activ_Num = 1:numel(Activities)
             largestOrientRange = orientRange;
             activityOrient = Activities{Activ_Num};
             fileOrient = filename;
+            trialOrient = Trial_Num;
         end
 
         % Calculate range for angular velocity on x axis (assuming AngularVelocity data exists)
@@ -57,6 +63,7 @@ for Activ_Num = 1:numel(Activities)
             largestAngVelRange = angVelRange;
             activityAngVel = Activities{Activ_Num};
             fileAngVel = filename;
+            trialAngVel = Trial_Num;
         end
 
         % Calculate range for magnetic field on x axis (assuming MagneticField data exists)
@@ -65,6 +72,13 @@ for Activ_Num = 1:numel(Activities)
             largestMagFieldRange = magFieldRange;
             activityMagField = Activities{Activ_Num};
             fileMagField = filename;
+            trialMagField = Trial_Num;
         end
     end
 end
+
+% Display the results
+fprintf('Activity with Largest Acceleration Range on X-axis: %s (%.2f) in file %s (Trial %d)\n', activityAccel, largestAccelRange, fileAccel, trialAccel);
+fprintf('Activity with Largest Orientation Range on X-axis: %s (%.2f) in file %s (Trial %d)\n', activityOrient, largestOrientRange, fileOrient, trialOrient);
+fprintf('Activity with Largest Angular Velocity Range on X-axis: %s (%.2f) in file %s (Trial %d)\n', activityAngVel, largestAngVelRange, fileAngVel, trialAngVel);
+fprintf('Activity with Largest Magnetic Field Range on X-axis: %s (%.2f) in file %s (Trial %d)\n', activityMagField, largestMagFieldRange, fileMagField, trialMagField);
