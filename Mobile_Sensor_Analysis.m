@@ -49,7 +49,8 @@ for Activ_Num = 1:numel(Activities)
             Max_MagField_Time ...
             Max_Orientation_Time...
             Max_AngVel_Time]);
-        % Resample acceleration signals
+
+
         Accel_Table = ResampleSensorData(Accel_Table, Min_Time);
         Accel_Table.Properties.VariableNames = {'Accel_X' 'Accel_Y' 'Accel_Z' 'ElapsedTime'};
         % Resample magnetic field signals
